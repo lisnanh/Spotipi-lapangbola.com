@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MagangSttcApp</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/trix@2.0.8/dist/trix.css">
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+  
+  <body>
+  <%= render 'shared/nav' %> 
+  <div class = "container mx-auto mt-20 px-5"> 
+  <% if flash[:notice] %>
+  <span class="block sm:inline"><%= flash[:notice] %></span>
+  <% elsif flash[:alert] %>
+   <span class="block sm:inline"><%= flash[:notice] %></span>
+   <% end %> 
+   </div>
+  <main class="container mx-auto mt-28 px-5">
+  <%= yield %>
+  </main>
+  </body>
+  
+   </html>

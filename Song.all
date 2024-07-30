@@ -1,0 +1,19 @@
+=> 
+[[32m#<Artist:0x00007fc7ee4f60b0[0m
+  id: [34m[1m2[0m,
+  name: [31m[1m"[0m[31mAfgansyah Reza[0m[31m[1m"[0m,
+  year: Sat, 27 May 1989,
+  nationality: [31m[1m"[0m[31mIndonesia[0m[31m[1m"[0m,
+  created_at:
+   Thu, 18 Jul 2024 07:46:12.200955000 UTC +00:00,
+  updated_at:
+   Thu, 18 Jul 2024 08:42:27.829825000 UTC +00:00[32m>[0m,
+ [32m#<Artist:0x00007fc7ee164ed8[0m
+  id: [34m[1m1[0m,
+  name: [31m[1m"[0m[31mAri Bernardus Lasso[0m[31m[1m"[0m,
+  year: Wed, 17 Jan 1973,
+  nationality: [31m[1m"[0m[31mIndonesia[0m[31m[1m"[0m,
+  created_at:
+   Thu, 18 Jul 2024 07:19:50.304394000 UTC +00:00,
+  updated_at:
+   Mon, 22 Jul 2024 07:55:28.848135000 UTC +00:00[32m>[0m]
