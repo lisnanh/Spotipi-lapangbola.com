@@ -1,0 +1,32 @@
+<div class="w-full p-8 bg-blue-100">
+  <% if notice.present? %>
+    <p class="py-2 px-4 bg-green-100 mb-5 text-green-700 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
+  <% end %>
+
+  <% content_for :title, "Artists" %>
+
+  <div class="flex justify-between items-center mb-8">
+    <h1 class="font-bold text-4xl text-blue-900">Artists</h1>
+    </div>
+
+  <div id="artists" class="w-full overflow-x-auto">
+    <table class="w-full bg-white shadow-lg rounded-lg border border-blue-200 overflow-hidden">
+      <thead class="bg-gradient-to-r from-blue-500 to-blue-700 text-white">
+        <tr>
+          <th class="py-4 px-6 text-left font-medium text-lg">Name</th>
+          <th class="py-4 px-6 text-left font-medium text-lg">Actions</th>
+        </tr>
+      </thead>
+      <tbody class="text-gray-800">
+        <% @artists.each do |artist| %>
+          <tr class="border-b border-gray-300 hover:bg-blue-50 transition-colors duration-300" onclick="window.location='<%= client_artist_path(artist) %>' ">
+            <td class="py-3 px-6 font-medium"><%= artist.name %></td>
+            <td class="py-3 px-6">
+              <%= link_to "Show this artist", artist, class: "text-blue-600 hover:underline font-semibold" %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

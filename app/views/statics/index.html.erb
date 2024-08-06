@@ -3,53 +3,91 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SPOTIPI</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <title>SPOTIPI</title>
   <style>
-    body, html {
-      margin: 0;
-      padding: 0;
-      width: 100%;
-      height: 120%;
-      background-color: #ffffff; /* Biru pastel */
+    body {
+      padding-left: 16rem; /* 64 (w-64) / 4 = 16rem */
+    }
+    .carousel {
+      display: flex;
+      transition: transform 1s ease-in-out;
+    }
+    .carousel-inner {
+      display: flex;
+      overflow: hidden;
     }
   </style>
-</head>
-<body class="flex flex-col items-center justify-center min-h-screen text-center">
-  <section class="max-w-4xl mx-auto px-4 py-12">
-    <h1 class="text-4xl font-extrabold text-blue-800">
-      SPOTIPI.
-      <strong class="font-extrabold text-blue-600">Music for Better Life.</strong>
-    </h1>
-    <p class="mt-4 text-xl leading-7 text-gray-800">
-      SPOTIPI adalah sebuah aplikasi musik revolusioner yang menyediakan akses ke jutaan lagu dari seluruh penjuru dunia, baik secara online maupun offline. Aplikasi ini dirancang untuk memberikan kemudahan kepada pengguna dalam menikmati musik favorit mereka kapan saja dan di mana saja.
-    </p>
-    <div class="mt-8 flex justify-center gap-4">
-    <%= link_to "About", about_path, class: "inline-block px-6 py-3 text-sm font-medium text-white bg-blue-500 rounded-lg shadow-md hover:bg-blue-600 transition-colors duration-300" %>
-    <%= link_to "Contact", contact_path, class: "inline-block px-6 py-3 text-sm font-medium text-blue-500 bg-white border border-blue-500 rounded-lg shadow-md hover:text-blue-600 hover:border-blue-600 transition-colors duration-300" %>
-    </div>
-    
-    <!-- Section for Reviews -->
-    <section class="mt-12">
-      <h2 class="text-2xl font-bold text-blue-800">What Our Customers Say</h2>
-      <div class="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div class="bg-white p-6 rounded-lg shadow-lg">
-          <p class="text-gray-700">"SPOTIPI punya segala genre musik! Beneran bikin betah banget nyari musik yang pas sesuai keinginan kita di SPOTIPI ini."</p>
-          <p class="mt-4 font-semibold text-blue-600">Gira Gautama</p>
-          <p class="text-sm text-gray-500">Penikmat Musik</p>
-        </div>
-        <div class="bg-white p-8 rounded-lg shadow-lg">
-          <p class="text-gray-700">"Gausah lagi nyari aplikasi yang lengkap! Selain musik, lo bisa dengerin podcast dan radio di SPOTIPI."</p>
-          <p class="mt-4 font-semibold text-blue-600">Jessica Aulia</p>
-          <p class="text-sm text-gray-500">Podcaster</p>
-        </div>
-        <div class="bg-white p-11 rounded-lg shadow-lg">
-          <p class="text-gray-600">"Suka banget sama SPOTIPI, karena gue jadi pede buat ngembangin musik DJ gue disini!"</p>
-          <p class="mt-4 font-semibold text-blue-700">Dion Mahendra</p>
-          <p class="text-sm text-gray-500">DJ</p>
+
+  <div class="p-4 flex flex-col items-center justify-center">
+    <div class="w-full max-w-4xl">
+      <div class="carousel-inner relative">
+        <div class="carousel w-full flex">
+          <!-- Slide 1 -->
+          <div class="w-full flex-shrink-0">
+            <div class="relative">
+              <img src="https://via.placeholder.com/1200x500/3498db/ffffff?text=Image+1" alt="Image 1" class="w-full">
+              <div class="absolute top-0 left-0 w-full h-full bg-blue-900 bg-opacity-50 flex items-center justify-center">
+                <h2 class="text-4xl font-bold text-white">Welcome to SPOTIPI</h2>
+              </div>
+            </div>
+          </div>
+          <!-- Slide 2 -->
+          <div class="w-full flex-shrink-0">
+            <div class="relative">
+              <img src="https://via.placeholder.com/1200x500/2ecc71/ffffff?text=Image+2" alt="Image 2" class="w-full">
+              <div class="absolute top-0 left-0 w-full h-full bg-blue-900 bg-opacity-50 flex items-center justify-center">
+                <h2 class="text-4xl font-bold text-white">Your Favorite Music</h2>
+              </div>
+            </div>
+          </div>
+          <!-- Slide 3 -->
+          <div class="w-full flex-shrink-0">
+            <div class="relative">
+              <img src="https://via.placeholder.com/1200x500/e74c3c/ffffff?text=Image+3" alt="Image 3" class="w-full">
+              <div class="absolute top-0 left-0 w-full h-full bg-blue-900 bg-opacity-50 flex items-center justify-center">
+                <h2 class="text-4xl font-bold text-white">Discover New Artists</h2>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </section>
-  </section>
+      <div class="flex justify-center mt-4">
+        <button class="px-4 py-2 bg-blue-700 text-white rounded-l" onclick="prevSlide()">Previous</button>
+        <button class="px-4 py-2 bg-blue-700 text-white rounded-r" onclick="nextSlide()">Next</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.carousel > div');
+    const totalSlides = slides.length;
+
+    function showSlide(index) {
+      const carousel = document.querySelector('.carousel');
+      if (index >= totalSlides) {
+        currentSlide = 0;
+      } else if (index < 0) {
+        currentSlide = totalSlides - 1;
+      } else {
+        currentSlide = index;
+      }
+      carousel.style.transform = `translateX(-${currentSlide * 100}%)`;
+    }
+
+    function nextSlide() {
+      showSlide(currentSlide + 1);
+    }
+
+    function prevSlide() {
+      showSlide(currentSlide - 1);
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      showSlide(0);
+    });
+  </script>
 </body>
 </html>
