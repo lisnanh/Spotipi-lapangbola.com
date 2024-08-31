@@ -1,0 +1,93 @@
+<!-- Header -->
+<div class="header bg-blue-200 p-8 rounded-lg relative">
+  <!-- Profile Background -->
+  <div class="absolute inset-0 bg-cover bg-center opacity-10" style="background-image: url(<%= current_user.avatar.attached? ? url_for(current_user.avatar) : asset_path('default-avatar.png') %>);"></div>
+  
+  <!-- Search Bar -->
+  <%= form_with url: client_dashboards_search_path, method: :get, local: true, class: "relative mt-4" do |form| %>
+    <div class="flex items-center bg-white rounded-full shadow-lg pl-4 pr-2 py-2">
+      <i></i>
+      <%= form.text_field :query, placeholder: "Search...", class: "bg-transparent w-full px-4 py-2 focus:outline-none text-gray-700" %>
+      <button type="submit" class="ml-2 bg-blue-400 text-white px-4 py-2 rounded-full hover:bg-blue-500 transition shadow-md">
+        <i class="fas fa-arrow-right"></i>
+      </button>
+    </div>
+  <% end %>
+
+  <!-- Header Content -->
+  <h1 class="text-4xl font-bold text-white mt-8">Musik apa yang ingin Anda cari?</h1>
+  <p class="text-lg text-white mt-4">Pastikan kamu update mengenai musik terkini.</p>
+  <div class="mt-8">
+     </div>
+</div>
+
+<!-- Search Results -->
+<div class="search-results mt-8">
+  <h1 class="text-2xl font-bold text-blue-900 mb-4">Search Results for "<%= @query %>"</h1>
+
+  <% if @artists.present? %>
+    <h2 class="text-xl font-semibold text-blue-700 mb-2">Artists</h2>
+    <div class="overflow-x-auto">
+      <table class="min-w-full bg-white rounded-lg shadow-md overflow-hidden">
+        <thead class="bg-blue-300 text-white">
+          <tr>
+            <th class="px-4 py-2 text-left">Artist Name</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @artists.each do |artist| %>
+            <tr class="border-b">
+              <td class="px-4 py-2">
+                <%= link_to artist.name, client_artist_path(artist), class: "text-blue-800 hover:underline" %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  <% end %>
+
+  <% if @albums.present? %>
+    <h2 class="text-xl font-semibold text-blue-700 mt-8 mb-2">Albums</h2>
+    <div class="overflow-x-auto">
+      <table class="min-w-full bg-white rounded-lg shadow-md overflow-hidden">
+        <thead class="bg-blue-300 text-white">
+          <tr>
+            <th class="px-4 py-2 text-left">Album Title</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @albums.each do |album| %>
+            <tr class="border-b">
+              <td class="px-4 py-2">
+                <%= link_to album.title, client_album_path(album), class: "text-blue-800 hover:underline" %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  <% end %>
+
+  <% if @songs.present? %>
+    <h2 class="text-xl font-semibold text-blue-700 mt-8 mb-2">Songs</h2>
+    <div class="overflow-x-auto">
+      <table class="min-w-full bg-white rounded-lg shadow-md overflow-hidden">
+        <thead class="bg-blue-300 text-white">
+          <tr>
+            <th class="px-4 py-2 text-left">Song Title</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @songs.each do |song| %>
+            <tr class="border-b">
+              <td class="px-4 py-2">
+                <%= link_to song.title, client_song_path(song), class: "text-blue-800 hover:underline" %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  <% end %>
+</div>

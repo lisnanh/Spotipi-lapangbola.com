@@ -1,64 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-  <title>SPOTIPI</title>
-  <style>
-    body {
-      padding-left: 16rem; /* 64 (w-64) / 4 = 16rem */
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <title>SPOTIPI</title>
+    <style>
+        body {
+            padding-left: 5rem; /* Adjusted padding for larger navbar */
+        }
+    </style>
 </head>
 <body class="bg-blue-40">
-  <nav class="fixed top-0 left-0 h-full w-64 bg-blue-100 border-r border-blue-300 shadow-md flex flex-col items-center py-6">
-    <div class="font-bold text-2xl text-blue-800 mb-10">
-      <%= link_to "SPOTIPI", root_path, class: "hover:font-bold" %>
+<nav class="fixed top-0 left-0 h-full w-20 bg-blue-100 border-r border-blue-300 shadow-md flex flex-col items-center py-6">
+    <div class="font-bold text-xs text-blue-800 mb-4">
+        <%= link_to "SPOTIPI", root_path, class: "hover:font-bold" %>
     </div>
+    <div class="flex flex-col space-y-4 nav-items">
+        <% if user_signed_in? %>
+            <% if current_user.admin? %>
+                <!-- Navbar untuk admin -->
+                <%= link_to root_path, class: "nav-item px-4 py-3 w-full text-center rounded-lg text-blue-700 transition-colors duration-300 flex items-center justify-center #{'bg-blue-300 shadow-lg' if current_page?(root_path)}" do %>
+                    <i class="fas fa-home"></i>
+                <% end %>
+                
+                <%= link_to admin_artists_path, class: "nav-item px-4 py-3 w-full text-center rounded-lg text-blue-700 transition-colors duration-300 flex items-center justify-center #{'bg-blue-300 shadow-lg' if current_page?(admin_artists_path)}" do %>
+                    <i class="fas fa-music"></i>
+                <% end %>
+                <%= link_to admin_songs_path, class: "nav-item px-4 py-3 w-full text-center rounded-lg text-blue-700 transition-colors duration-300 flex items-center justify-center #{'bg-blue-300 shadow-lg' if current_page?(admin_songs_path)}" do %>
+                    <i class="fas fa-play"></i>
+                <% end %>
+                <%= link_to admin_albums_path, class: "nav-item px-4 py-3 w-full text-center rounded-lg text-blue-700 transition-colors duration-300 flex items-center justify-center #{'bg-blue-300 shadow-lg' if current_page?(admin_albums_path)}" do %>
+                    <i class="fas fa-compact-disc"></i>
+                <% end %>
+                <%= link_to about_path, class: "nav-item px-4 py-3 w-full text-center rounded-lg text-blue-700 transition-colors duration-300 flex items-center justify-center #{'bg-blue-300 shadow-lg' if current_page?(about_path)}" do %>
+                    <i class="fas fa-info-circle"></i>
+                <% end %>
+                <%= link_to contact_path, class: "nav-item px-4 py-3 w-full text-center rounded-lg text-blue-700 transition-colors duration-300 flex items-center justify-center #{'bg-blue-300 shadow-lg' if current_page?(contact_path)}" do %>
+                    <i class="fas fa-envelope"></i>
+                <% end %>
+                <%= link_to edit_user_registration_path, class: "nav-item px-4 py-3 w-full text-center rounded-lg text-blue-700 transition-colors duration-300 flex items-center justify-center #{'bg-blue-300 shadow-lg' if current_page?(edit_user_registration_path)}" do %>
+                    <i class="fas fa-user"></i>
+                <% end %>
+                <%= link_to destroy_user_session_path, method: :delete, class: "nav-item px-4 py-3 w-full text-center rounded-lg text-blue-700 transition-colors duration-300 flex items-center justify-center" do %>
+                    <i class="fas fa-sign-out-alt"></i>
+                <% end %>
+            <% else %>
 
-    <div class="flex flex-col space-y-4">
-      <%= link_to root_path, class: "px-3 py-2 w-full text-left rounded-lg text-blue-700 hover:bg-blue-200 transition-colors duration-300 flex items-center" do %>
-        <i class="fas fa-home mr-2"></i> Home
-      <% end %>
-      <%= link_to artists_path, class: "px-3 py-2 w-full text-left rounded-lg text-blue-700 hover:bg-blue-200 transition-colors duration-300 flex items-center" do %>
-        <i class="fas fa-music mr-2"></i> Artist
-      <% end %>
-      <%= link_to songs_path, class: "px-3 py-2 w-full text-left rounded-lg text-blue-700 hover:bg-blue-200 transition-colors duration-300 flex items-center" do %>
-        <i class="fas fa-play mr-2"></i> Song
-      <% end %>
-      <%= link_to albums_path, class: "px-3 py-2 w-full text-left rounded-lg text-blue-700 hover:bg-blue-200 transition-colors duration-300 flex items-center" do %>
-        <i class="fas fa-compact-disc mr-2"></i> Album
-      <% end %>
-      <%= link_to about_path, class: "px-3 py-2 w-full text-left rounded-lg text-blue-700 hover:bg-blue-200 transition-colors duration-300 flex items-center" do %>
-        <i class="fas fa-info-circle mr-2"></i> About
-      <% end %>
-      <%= link_to contact_path, class: "px-3 py-2 w-full text-left rounded-lg text-blue-700 hover:bg-blue-200 transition-colors duration-300 flex items-center" do %>
-        <i class="fas fa-envelope mr-2"></i> Contact
-      <% end %>
-      
-      <% if user_signed_in? %>
-      <% if current_user.admin? %>
-        <%= link_to destroy_user_session_path, method: :delete, class: "px-3 py-2 w-full text-left rounded-lg text-blue-700 hover:bg-blue-200 transition-colors duration-300 flex items-center" do %>
-          <i class="fas fa-sign-out-alt mr-2"></i> Logout
+                <!-- Navbar untuk client -->
+                <div class="flex flex-col items-center mb-4">
+                    <% if current_user.avatar.attached? %>
+                        <%= link_to edit_user_registration_path do %>
+                            <%= image_tag current_user.avatar, class: "w-12 h-12 rounded-full mb-1" %>
+                        <% end %>
+                    <% else %>
+                    <%= link_to edit_user_registration_path do %>
+                            <%= image_tag 'jeno.jpg', class: "w-12 h-12 rounded-full mb-1" %>
+                        <% end %>
+                    <% end %>
+                </div>                
+
+                <%= link_to client_root_path, class: "nav-item px-4 py-3 w-full text-center rounded-lg text-blue-700 transition-colors duration-300 flex items-center justify-center #{'bg-blue-300 shadow-lg' if current_page?(client_root_path)}" do %>
+                    <i class="fas fa-home"></i>
+                <% end %>
+                <!-- Search Engine Icon for Client -->
+                <%= link_to client_dashboards_search_path, class: "nav-item px-4 py-3 w-full text-center rounded-lg text-blue-700 transition-colors duration-300 flex items-center justify-center #{'bg-blue-300 shadow-lg' if current_page?(client_dashboards_search_path)}" do %>
+                    <i class="fas fa-search"></i>
+                <% end %>
+                <%= link_to client_artists_path, class: "nav-item px-4 py-3 w-full text-center rounded-lg text-blue-700 transition-colors duration-300 flex items-center justify-center #{'bg-blue-300 shadow-lg' if current_page?(client_artists_path)}" do %>
+                    <i class="fas fa-music"></i>
+                <% end %>
+                <%= link_to client_songs_path, class: "nav-item px-4 py-3 w-full text-center rounded-lg text-blue-700 transition-colors duration-300 flex items-center justify-center #{'bg-blue-300 shadow-lg' if current_page?(client_songs_path)}" do %>
+                    <i class="fas fa-play"></i>
+                <% end %>
+                <%= link_to client_albums_path, class: "nav-item px-4 py-3 w-full text-center rounded-lg text-blue-700 transition-colors duration-300 flex items-center justify-center #{'bg-blue-300 shadow-lg' if current_page?(client_albums_path)}" do %>
+                    <i class="fas fa-compact-disc"></i>
+                <% end %>
+                <%= link_to about_path, class: "nav-item px-4 py-3 w-full text-center rounded-lg text-blue-700 transition-colors duration-300 flex items-center justify-center #{'bg-blue-300 shadow-lg' if current_page?(about_path)}" do %>
+                    <i class="fas fa-info-circle"></i>
+                <% end %>
+                <%= link_to contact_path, class: "nav-item px-4 py-3 w-full text-center rounded-lg text-blue-700 transition-colors duration-300 flex items-center justify-center #{'bg-blue-300 shadow-lg' if current_page?(contact_path)}" do %>
+                    <i class="fas fa-envelope"></i>
+                <% end %>
+                <%= link_to destroy_user_session_path, method: :delete, class: "nav-item px-4 py-3 w-full text-center rounded-lg text-blue-700 transition-colors duration-300 flex items-center justify-center" do %>
+                    <i class="fas fa-sign-out-alt"></i>
+                <% end %>
+            <% end %>
+        <% else %>
+            <!-- Navbar untuk umum -->
+        <%= link_to new_user_session_path, class: "nav-item px-4 py-3 w-full text-center rounded-lg text-blue-700 transition-colors duration-300 flex items-center justify-center space-x-2 #{'bg-blue-300 shadow-lg' if current_page?(new_user_session_path)}" do %>
+        <i class="fas fa-sign-in-alt"></i>
+            <span class="font-semibold text-blue-700"></span>
         <% end %>
-        <%= link_to edit_user_registration_path, class: "px-3 py-2 w-full text-left rounded-lg text-blue-700 hover:bg-blue-200 transition-colors duration-300 flex items-center" do %>
-          <i class="fas fa-user mr-2"></i> Profile
+        <%= link_to new_user_registration_path, class: "nav-item px-4 py-3 w-full text-center rounded-lg text-blue-700 transition-colors duration-300 flex items-center justify-center space-x-2 #{'bg-blue-300 shadow-lg' if current_page?(new_user_registration_path)}" do %>
+        <i class="fas fa-user-plus"></i>
+            <span class="font-semibold text-blue-700"></span>
         <% end %>
-      <% else %>
-        <%= link_to new_user_session_path, class: "px-3 py-2 w-full text-left rounded-lg text-blue-700 hover:bg-blue-200 transition-colors duration-300 flex items-center" do %>
-          <i class="fas fa-sign-in-alt mr-2"></i> Login
         <% end %>
-        <%= link_to new_user_registration_path, class: "px-3 py-2 w-full text-left rounded-lg text-blue-700 hover:bg-blue-200 transition-colors duration-300 flex items-center" do %>
-          <i class="fas fa-user-plus mr-2"></i> Sign up
-        <% end %>
-      <% end %>
     </div>
-  </nav>
-
-  <div class="p-4">
+</nav>
+<div class="p-4">
     <!-- Main content goes here -->
-  </div>
+</div>
 </body>
 </html>

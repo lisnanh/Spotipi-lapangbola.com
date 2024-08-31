@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
+  namespace :client do
+  resources :playlists
+  end
   get "statics/index"
+
   devise_for :users, controller: {
-    sessions: 'users/sessions'
+    sessions: 'users/sessions',
+    registrations: 'users/registrations'
   }
   devise_scope :user do
     get '/users/sign_out', to: 'devise/sessions#destroy'
@@ -11,24 +16,23 @@ Rails.application.routes.draw do
   authenticate :user, -> (user) {user.admin?} do
   namespace :admin do 
     root "dashboards#index" #admindashboards
-    resource :songs, param: :id
-    resource :artists
-    resource :albums
+    resources :songs, param: :id
+    resources :artists
+    resources :albums
   end
 end
   
   # Client namespace
   namespace :client do
     root "dashboards#index"
+    get 'dashboards/search', to: 'dashboards#search', as: 'dashboards_search'
     get 'statics/about', to: 'statics#about'
     get 'statics/contact', to: 'statics#contact'
-    
-    resource :artists, only: [:index, :show]
-    resource :albums, only: [:index, :show]
-    resource :statics 
-    resource :songs, only: [:index, :show] do
+    resources :artists, only: [:index, :show]
+    resources :albums, only: [:index, :show]
+    resources :songs, only: [:index, :show] 
+    resources :dashboards, only: [:index] 
   end
-end
   
   authenticated :user, -> user {user.admin?} do
     root to: 'admin/dashboards#index', as: :admin_root_path

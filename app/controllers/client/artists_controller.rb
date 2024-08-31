@@ -1,6 +1,6 @@
 class Client::ArtistsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_artist, only: [:show ]
+  before_action :set_artist, only: [:show]
 
   # GET /artists or /artists.json
   def index

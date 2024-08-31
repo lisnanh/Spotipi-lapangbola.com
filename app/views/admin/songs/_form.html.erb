@@ -2,7 +2,6 @@
   <% if song.errors.any? %>
     <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
       <h2><%= pluralize(song.errors.count, "error") %> prohibited this song from being saved:</h2>
-
       <ul>
         <% song.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -12,42 +11,42 @@
   <% end %>
 
   <div class="my-5">
-    <%= form.label :title %>
-    <%= form.text_field :title, class: "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
-
-  <div class="field">
-  <%= form.label :artist %>
-  <%= form.collection_select :artist_ids, Artist.order(:name), :id, :name, {},
-  multiple: true, prompt: "Select the Category", class: "",
-  data: {} %>
-
-  <div class="my-5">
-    <%= form.label :release %>
-    <%= form.date_field :release, class: "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
-
-  <div>
-  <%= form.label :file %><br>
-  <%= form.file_field :file %>
-  </div>
-
-  <div>
-  <%= form.label :image %><br>
-  <%= form.file_field :image %>
+    <%= form.label :title, class: "text-blue-700 font-medium" %>
+    <%= form.text_field :title, class: "block shadow-md rounded-md border border-blue-200 outline-none px-3 py-2 mt-2 w-full focus:ring-2 focus:ring-blue-400" %>
   </div>
 
   <div class="my-5">
-    <%= form.label :composer %>
-    <%= form.text_field :composer, class: "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.label :artist_ids, "Artist", class: "text-blue-700 font-medium" %>
+    <%= form.collection_select :artist_ids, Artist.order(:name), :id, :name, {}, multiple: true, prompt: "Select the Artist", class: "block shadow-md rounded-md border border-blue-200 outline-none px-3 py-2 mt-2 w-full focus:ring-2 focus:ring-blue-400" %>
   </div>
 
   <div class="my-5">
-    <%= form.label :producer %>
-    <%= form.text_field :producer, class: "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.label :release, class: "text-blue-700 font-medium" %>
+    <%= form.date_field :release, class: "block shadow-md rounded-md border border-blue-200 outline-none px-3 py-2 mt-2 w-full focus:ring-2 focus:ring-blue-400" %>
   </div>
 
-  <div class="inline">
-    <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+  <div class="my-5">
+    <%= form.label :file, class: "text-blue-700 font-medium" %>
+    <%= form.file_field :file, class: "block shadow-md rounded-md border border-blue-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :image, class: "text-blue-700 font-medium" %>
+    <%= form.file_field :image, class: "block shadow-md rounded-md border border-blue-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :composer, class: "text-blue-700 font-medium" %>
+    <%= form.text_field :composer, class: "block shadow-md rounded-md border border-blue-200 outline-none px-3 py-2 mt-2 w-full focus:ring-2 focus:ring-blue-400" %>
+  </div>
+
+  <div class="my-5">
+    <%= form.label :producer, class: "text-blue-700 font-medium" %>
+    <%= form.text_field :producer, class: "block shadow-md rounded-md border border-blue-200 outline-none px-3 py-2 mt-2 w-full focus:ring-2 focus:ring-blue-400" %>
+  </div>
+
+  <div class="flex justify-start space-x-4 mt-6">
+    <%= form.submit "Save", class: "rounded-lg py-3 px-5 bg-blue-600 text-white font-medium cursor-pointer hover:bg-blue-700 transition-colors duration-300" %>
+    <%= link_to "Back", admin_songs_path, class: "rounded-lg py-3 px-5 bg-yellow-500 text-white font-medium cursor-pointer hover:bg-yellow-600 transition-colors duration-300" %>
   </div>
 <% end %>

@@ -1,93 +1,222 @@
-<!DOCTYPE html>
-<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-  <title>SPOTIPI</title>
-  <style>
-    body {
-      padding-left: 16rem; /* 64 (w-64) / 4 = 16rem */
-    }
-    .carousel {
-      display: flex;
-      transition: transform 1s ease-in-out;
-    }
-    .carousel-inner {
-      display: flex;
-      overflow: hidden;
-    }
-  </style>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/hyperui@0.6.0/dist/hyperui.min.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+</head>
 
-  <div class="p-4 flex flex-col items-center justify-center">
-    <div class="w-full max-w-4xl">
-      <div class="carousel-inner relative">
-        <div class="carousel w-full flex">
-          <!-- Slide 1 -->
-          <div class="w-full flex-shrink-0">
-            <div class="relative">
-              <img src="https://via.placeholder.com/1200x500/3498db/ffffff?text=Image+1" alt="Image 1" class="w-full">
-              <div class="absolute top-0 left-0 w-full h-full bg-blue-900 bg-opacity-50 flex items-center justify-center">
-                <h2 class="text-4xl font-bold text-white">Welcome to SPOTIPI</h2>
-              </div>
-            </div>
-          </div>
-          <!-- Slide 2 -->
-          <div class="w-full flex-shrink-0">
-            <div class="relative">
-              <img src="https://via.placeholder.com/1200x500/2ecc71/ffffff?text=Image+2" alt="Image 2" class="w-full">
-              <div class="absolute top-0 left-0 w-full h-full bg-blue-900 bg-opacity-50 flex items-center justify-center">
-                <h2 class="text-4xl font-bold text-white">Your Favorite Music</h2>
-              </div>
-            </div>
-          </div>
-          <!-- Slide 3 -->
-          <div class="w-full flex-shrink-0">
-            <div class="relative">
-              <img src="https://via.placeholder.com/1200x500/e74c3c/ffffff?text=Image+3" alt="Image 3" class="w-full">
-              <div class="absolute top-0 left-0 w-full h-full bg-blue-900 bg-opacity-50 flex items-center justify-center">
-                <h2 class="text-4xl font-bold text-white">Discover New Artists</h2>
-              </div>
-            </div>
-          </div>
-        </div>
+<!--- Home Banner --->
+<section class="bg-blue-50 py-12 w-full">
+<div class="mx-auto text-center w-full px-8">
+<h1 class="text-4xl font-bold text-blue-900">Welcome to SPOTIPI</h1>
+<p class="mt-4 text-blue-700">Your gateway to endless music possibilities</p>
+</div>
+</section>
+
+<!--- Introduction & Video --->
+<section class="bg-blue-100 py-12 w-full">
+  <div class="mx-auto text-center w-full px-8">
+  <h2 class="text-3xl font-semibold text-blue-800">Cari apa saja ada di SPOTIPI.</h2>
+    <p class="mt-4 text-blue-600">Musik apapun tersedia di SPOTIPI. Dengarkan setiap musik yang kamu suka, tambahkan love dan masukkan ke playlist. Mudah bukan? </p>
+    <div class="mt-8">
+      <video controls class="rounded-lg shadow-lg border border-blue-200 w-full">
+        <source src="/assets/videos/hwaa.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  </div>
+</section>
+
+<!--- Kreativitas --->
+<section class="bg-blue-50 py-12 w-full">
+  <div class="mx-auto text-center w-full px-8">
+    <h2 class="text-3xl font-semibold text-blue-800">Temukan Artis Favoritmu!</h2>
+    <p class="mt-4 text-blue-600">Kamu bisa mendengarkan lagu artis favoritmu disini. Dengan SPOTIPI, hidupkan playlist mu.</p>
+  </div>
+</section>
+
+<!--- Brand Sponsorship --->
+<section class="bg-blue-100 py-12 w-full">
+  <div class="mx-auto text-center w-full px-8">
+    <h2 class="text-3xl font-semibold text-blue-800">Clients</h2>
+    <div class="grid grid-cols-2 gap-8 mt-8 lg:grid-cols-4">
+      <!-- Client Logo -->
+      
       </div>
-      <div class="flex justify-center mt-4">
-        <button class="px-4 py-2 bg-blue-700 text-white rounded-l" onclick="prevSlide()">Previous</button>
-        <button class="px-4 py-2 bg-blue-700 text-white rounded-r" onclick="nextSlide()">Next</button>
+      <!-- Repeat for more clients -->
+    </div>
+  </div>
+</section>
+
+<!--- About Us --->
+
+<section class="bg-blue-50 py-12 w-full">
+  <div class="mx-auto w-full px-8">
+    <h2 class="text-3xl font-semibold text-blue-800 text-center">About Us</h2>
+    <div class="mt-8">
+          <!-- Sections with your content -->
+          <div class="flow-root rounded-lg border border-blue-200 bg-blue-50 py-6 shadow-lg">
+  <dl class="-my-3 divide-y divide-blue-200 text-sm">
+    <div class="grid grid-cols-1 gap-2 p-4 even:bg-blue-100 sm:grid-cols-3 sm:gap-6">
+      <dt class="font-medium text-blue-800">Nama</dt>
+      <dd class="text-blue-700 sm:col-span-2">SPOTIPI</dd>
+    </div>
+
+    <div class="grid grid-cols-1 gap-2 p-4 even:bg-blue-100 sm:grid-cols-3 sm:gap-6">
+      <dt class="font-medium text-blue-800">Untuk</dt>
+      <dd class="text-blue-700 sm:col-span-2">Music</dd>
+    </div>
+
+    <div class="grid grid-cols-1 gap-2 p-4 even:bg-blue-100 sm:grid-cols-3 sm:gap-6">
+      <dt class="font-medium text-blue-800">Rilis</dt>
+      <dd class="text-blue-700 sm:col-span-2">19 July 2024</dd>
+    </div>
+
+    <div class="grid grid-cols-1 gap-2 p-4 even:bg-blue-100 sm:grid-cols-3 sm:gap-6">
+      <dt class="font-medium text-blue-800">Credit</dt>
+      <dd class="text-blue-700 sm:col-span-2">magang_sttc_app</dd>
+    </div>
+
+    <div class="grid grid-cols-1 gap-2 p-4 even:bg-blue-100 sm:grid-cols-3 sm:gap-6">
+      <dt class="font-medium text-blue-800">Tentang</dt>
+      <dd class="text-blue-700 sm:col-span-2">
+        SPOTIPI adalah sebuah aplikasi musik revolusioner yang menyediakan akses ke jutaan lagu dari seluruh penjuru dunia, baik secara online maupun offline. Aplikasi ini dirancang untuk memberikan kemudahan kepada pengguna dalam menikmati musik favorit mereka kapan saja dan di mana saja. Dengan antarmuka yang intuitif dan berbagai fitur unggulan, SPOTIPI memungkinkan pengguna untuk menjelajahi, mengunduh, dan memutar musik dengan mudah. Pengguna dapat membuat playlist pribadi, mengikuti artis favorit, dan menemukan musik baru yang sesuai dengan selera mereka. SPOTIPI memastikan pengalaman mendengarkan musik yang seamless dan memuaskan bagi setiap penggunanya.
+      </dd>
+    </div>
+  </dl>
+</div>
+
+        </dl>
       </div>
     </div>
   </div>
+</section>
 
-  <script>
-    let currentSlide = 0;
-    const slides = document.querySelectorAll('.carousel > div');
-    const totalSlides = slides.length;
+<!--- Quotes --->
+<section class="bg-blue-100 py-12 w-full">
+  <div class="mx-auto text-center w-full px-8">
+    <blockquote class="text-2xl italic font-semibold text-blue-800">"Music is the universal language of mankind." - Henry Wadsworth Longfellow</blockquote>
+  </div>
+</section>
 
-    function showSlide(index) {
-      const carousel = document.querySelector('.carousel');
-      if (index >= totalSlides) {
-        currentSlide = 0;
-      } else if (index < 0) {
-        currentSlide = totalSlides - 1;
-      } else {
-        currentSlide = index;
-      }
-      carousel.style.transform = `translateX(-${currentSlide * 100}%)`;
-    }
+<!--- Social Media --->
+<section class="bg-blue-50 py-12 w-full">
+        <div class="mx-auto text-center w-full px-8">
+            <h2 class="text-3xl font-semibold text-blue-800">Sosial Media</h2>
+            <p class="mt-4 text-blue-600">Ikuti sosial media kami untuk terus update mengenai musik terbaru!</p>
+            <div class="mt-8 flex justify-center space-x-6">
+                <!-- X Button -->
+                <a href="https://x.com" class="inline-flex items-center justify-center p-4 bg-blue-100 text-blue-800 rounded-full hover:bg-blue-200 transition">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 10.5l6-6 6 6M6 21l6-6 6 6"/>
+                    </svg>
+                </a>
+                <!-- Instagram Button -->
+                <a href="https://instagram.com" class="inline-flex items-center justify-center p-4 bg-blue-100 text-blue-800 rounded-full hover:bg-blue-200 transition">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 2.343a4 4 0 00-5.657 0 4 4 0 000 5.657 4 4 0 005.657 0 4 4 0 000-5.657zM12 5a7 7 0 017 7 7 7 0 01-7 7 7 7 0 01-7-7 7 7 0 017-7zm0 10a3 3 0 100-6 3 3 0 000 6z"/>
+                    </svg>
+                </a>
+                <!-- Youtube Button -->
+                <a href="https://youtube.com" class="inline-flex items-center justify-center p-4 bg-blue-100 text-blue-800 rounded-full hover:bg-blue-200 transition">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21.8 8.35c-.2-1.37-.8-2.57-1.68-3.41a5.872 5.872 0 00-3.4-1.16C14.67 3.6 12 3.6 12 3.6s-2.67 0-4.71.17c-1.39.15-2.7.73-3.82 1.66a5.846 5.846 0 00-1.34 3.48c-.2 1.37-.2 2.71-.2 2.71s0 1.34.2 2.71c.14 1.27.67 2.44 1.34 3.48a5.86 5.86 0 003.82 1.66c2.04.17 4.71.17 4.71.17s2.67 0 4.71-.17c1.39-.15 2.7-.73 3.82-1.66a5.872 5.872 0 001.68-3.41c.2-1.37.2-2.71.2-2.71s0-1.34-.2-2.71zM10 15V9l6 3-6 3z"/>
+                    </svg>
+                </a>
+                <!-- TikTok Button -->
+                <a href="https://tiktok.com" class="inline-flex items-center justify-center p-4 bg-blue-100 text-blue-800 rounded-full hover:bg-blue-200 transition">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 21v-6.3c-.34.07-.68.1-1 .1-1.3 0-2.5-1.16-2.5-2.6s1.2-2.6 2.5-2.6c.35 0 .69.05 1 .1V3m0 6.3v7.3c.34.07.68.1 1 .1 1.3 0 2.5-1.16 2.5-2.6S14.3 11 13 11c-.35 0-.69.05-1 .1z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
 
-    function nextSlide() {
-      showSlide(currentSlide + 1);
-    }
+<!--- Contact Us --->
+<section class="bg-blue-100 py-12 w-full">
+  <div class="mx-auto w-full px-8">
+    <h2 class="text-3xl font-semibold text-blue-800 text-center">Contact Us</h2>
+    <div class="mt-8">
+      <div class="rounded-lg bg-white p-8 shadow-lg lg:col-span-3 lg:p-12 border border-blue-200">
+        
+    <div class="grid grid-cols-1 gap-x-16 gap-y-8 lg:grid-cols-5">
+      <div class="lg:col-span-2 lg:py-12">
+        <p class="max-w-xl text-lg text-gray-700">
+          Pada waktu yang sama, kami menghadirkan kenyamanan bagi Anda. Beritahukan keluhan Anda sekarang!
+        </p>
+        <div class="mt-8">
+          <a href="https://maps.app.goo.gl/qodG2DddDJeuSS2D6" class="text-2xl font-bold text-blue-600"> Location </a>
 
-    function prevSlide() {
-      showSlide(currentSlide - 1);
-    }
+          <address class="mt-2 not-italic text-gray-600">
+            Lapangbola HQ, Ruko Puri Dago Arcamanik, Jl. Terusan Jakarta No.388 Blok 54, Sukamiskin, Kec. Arcamanik, Kota Bandung, Jawa Barat 40291
+          </address>
+        </div>
+      </div>
 
-    document.addEventListener('DOMContentLoaded', () => {
-      showSlide(0);
-    });
-  </script>
-</body>
-</html>
+      <div class="rounded-lg bg-white p-8 shadow-lg lg:col-span-3 lg:p-12 border border-blue-200">
+        <form action="#" class="space-y-4">
+          <div>
+            <label class="sr-only" for="name">Nama</label>
+            <input
+              class="w-full rounded-lg border border-blue-200 p-3 text-sm"
+              placeholder="Nama"
+              type="text"
+              id="name"
+            />
+          </div>
+
+          <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+            <div>
+              <label class="sr-only" for="email">Email</label>
+              <input
+                class="w-full rounded-lg border border-blue-200 p-3 text-sm"
+                placeholder="Email"
+                type="email"
+                id="email"
+              />
+            </div>
+
+            <div>
+              <label class="sr-only" for="phone">Phone</label>
+              <input
+                class="w-full rounded-lg border border-blue-200 p-3 text-sm"
+                placeholder="No. Telpon"
+                type="tel"
+                id="phone"
+              />
+            </div>
+          </div>
+
+          <div>
+            <label class="sr-only" for="message">Message</label>
+            <textarea
+              class="w-full rounded-lg border border-blue-200 p-3 text-sm"
+              placeholder="Pesan"
+              rows="8"
+              id="message"
+            ></textarea>
+          </div>
+
+          <div class="mt-4">
+            <button
+              type="submit"
+              class="inline-block w-full rounded-lg bg-blue-500 px-5 py-3 font-medium text-white sm:w-auto hover:bg-blue-600 transition-colors duration-300"
+            >
+              Kirim
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--- Footer --->
+<footer class="bg-blue-900 py-4 w-full">
+  <div class="mx-auto text-left text-white w-full px-8">
+    <p>&copy; 2024 SPOTIPI. All rights reserved.</p>
+  </div>
+</footer>

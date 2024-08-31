@@ -1,11 +1,128 @@
-<div class="w-full">
-  <% if notice.present? %>
-    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
-  <% end %>
+<!DOCTYPE html>
+<html lang="en">
 
-  <% content_for :title, "Dashboards" %>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #d1e9ff, #b3d4fc);
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth; /* Transisi scroll yang halus */
+        }
 
-  <div class="flex justify-between items-center">
-    <h1 class="font-bold text-4xl">Dashboards</h1>
+        .profile-img {
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border: 2px solid #fff;
+        }
+
+        .hero-section {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 2rem;
+            background: linear-gradient(135deg, #83a4d4, #b6fbff);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            position: relative;
+            height: 50vh; /* Memperbesar tinggi section untuk memperbesar gambar */
+            overflow: hidden;
+        }
+
+        .hero-section img {
+            width: 100%; /* Memastikan gambar mencakup seluruh lebar section */
+            height: 100%; /* Memastikan gambar mencakup seluruh tinggi section */
+            object-fit: cover; /* Menjaga proporsi gambar */
+            filter: blur(5px); /* Menambah sedikit blur */
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+
+        .hero-text {
+            max-width: 50%;
+            z-index: 1; /* Pastikan teks berada di depan gambar */
+        }
+
+        .hero-text h1 {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .hero-text p {
+            color: #fff;
+            margin-top: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .playlist-section {
+            margin-top: 2rem;
+            padding: 2rem;
+            background: linear-gradient(135deg, #b3d4fc, #d1e9ff);
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, opacity 0.3s ease; /* Efek transisi */
+        }
+
+        .playlist-section:hover {
+            transform: translateY(-10px);
+            opacity: 0.95;
+        }
+
+        .playlist-item {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 1rem;
+            margin-bottom: 1rem;
+            transition: transform 0.3s ease; /* Efek transisi */
+        }
+
+        .playlist-item:hover {
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+
+<body class="min-h-screen flex flex-col bg-blue-100">
+    <div class="hero-section relative">
+        <!-- Background Profile Image -->
+        <% if user_signed_in? %>
+            <% if current_user.avatar.attached? %>
+                <%= image_tag current_user.avatar, class: "absolute inset-0 w-full h-full object-cover filter blur-ms" %>
+            <% else %>
+                <div class="absolute inset-0 bg-blue-300">
+                    <%= image_tag 'jeno.jpg', class: "absolute inset-0 w-full h-full object-cover filter blur-ms" %>
+                </div>
+            <% end %>
+        <% end %>
+
+        <!-- Overlay & Text Content -->
+        <div class="absolute inset-0 bg-blue-500 bg-opacity-50 flex flex-col items-center justify-center text-center">
+            <div class="text-white p-4">
+                <h1 class="text-6xl font-bold">Welcome, <%= current_user.username %></h1>
+                <p class="text-2xl mt-4">Nikmati perjalanan musik mu bersama SPOTIPI.</p>
+            </div>
+        </div>
     </div>
-</div>
+
+    <!-- Playlist Section -->
+    <section class="playlist-section container mx-auto mt-12 p-4">
+        <div class="text-center mb-8">
+           
+        </div>
+
+        <div class="playlist-item">
+            <%= render 'client/playlists/index' %>
+        </div>
+    </section>
+</body>
+
+</html>
